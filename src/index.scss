@@ -28,14 +28,26 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2.5rem 0.75rem 1.5rem;
+    padding: 2rem 0 1.5rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    background: rgb(243, 244, 252);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    img {
+      width: 20px;
+      height: 22px;
+      padding-right: 0.75rem;
+    }
   }
   .reminder {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1rem;
-    background: #f3f3f3;
+    background: #f5eded;
     border-radius: 4px 4px 0 0;
     margin-bottom: 0.6rem;
     border-bottom: 1px solid rgba(35, 29, 92, 0.11);

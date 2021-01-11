@@ -39,7 +39,7 @@ export default function Header({ todos, setTodos, inputText, setInputText }) {
             size="small"
             className="install"
           >
-            Back
+            Cancel
           </Button>
           <Button
             variant="contained"

@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 // material ui
 import { Box, Button, Typography } from '@material-ui/core'
 
+import logoImg from '../assets/logo.png'
+
 export default function Header() {
   // run once
   useEffect(() => {
@@ -41,12 +43,17 @@ export default function Header() {
 
   return (
     <Box className="nav">
-      <Typography variant="overline" display="block">
-        Remind m3
-      </Typography>
-      <Button variant="contained" className="install">
-        Get app
-      </Button>
+      <div className="logo">
+        <img src={logoImg} alt="Remind me" />
+        <Typography variant="overline" display="block">
+          Remind me
+        </Typography>
+      </div>
+      <div>
+        <Button variant="contained" className="install">
+          Get app
+        </Button>
+      </div>
     </Box>
   )
 }
