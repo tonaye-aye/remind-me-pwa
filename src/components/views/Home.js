@@ -7,10 +7,10 @@ import { Button, Container } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 
 // components
-import Header from './Header'
-import Reminder from './Reminder'
+import Header from '../Header'
+import Tile from '../Tile'
 
-export default function Home({ todos, setTodos }) {
+export default function Home({ reminders, setReminders }) {
   const history = useHistory()
 
   return (
@@ -24,13 +24,13 @@ export default function Home({ todos, setTodos }) {
       >
         <AddIcon onClick={() => history.push('/new')} />
       </Button>
-      {todos.map((todo) => (
-        <Reminder
-          key={todo.id}
-          todos={todos}
-          setTodos={setTodos}
-          todo={todo}
-          text={todo.text}
+      {reminders.map((reminder, index) => (
+        <Tile
+          key={index}
+          reminders={reminders}
+          setReminders={setReminders}
+          reminder={reminder}
+          text={reminder.text}
         />
       ))}
     </Container>

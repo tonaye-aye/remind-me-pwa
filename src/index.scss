@@ -61,4 +61,12 @@ body {
       margin: 0 0 0 0.3rem;
     }
   }
+  .reminder {
+    background: rgb(243, 244, 252);
+    padding: 0.8rem 1rem;
+    border-radius: 4px 4px 0 0;
+    .pre-title {
+      opacity: 0.3;
+    }
+  }
 }

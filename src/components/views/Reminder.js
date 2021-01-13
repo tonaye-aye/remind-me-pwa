@@ -3,15 +3,15 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
-import { Box, Button, Container } from '@material-ui/core'
+import { Box, Button, Container, Typography } from '@material-ui/core'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
-export default function Header({ note, todos, setTodos }) {
+export default function Reminder({ reminder, reminders, setReminders }) {
   const history = useHistory()
 
   // delete handler for todo items
   const deleteHandler = () => {
-    setTodos(todos.filter((el) => el.id !== note.id))
+    setReminders(reminders.filter((item) => item.id !== reminder.id))
     history.push('/')
   }
 
@@ -35,7 +35,11 @@ export default function Header({ note, todos, setTodos }) {
           Delete
         </Button>
       </Box>
-      <Box>{note.text}</Box>
+      <Box className="reminder">
+        <Typography variant="overline" display="block">
+          <span className="pre-title">Title:</span> {reminder.text}
+        </Typography>
+      </Box>
     </Container>
   )
 }

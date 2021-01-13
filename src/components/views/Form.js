@@ -6,7 +6,12 @@ import { useHistory } from 'react-router-dom'
 import { Box, Button, Container, TextField } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 
-export default function Header({ todos, setTodos, inputText, setInputText }) {
+export default function Header({
+  reminders,
+  setReminders,
+  inputText,
+  setInputText
+}) {
   const history = useHistory()
 
   // handle input text
@@ -22,7 +27,7 @@ export default function Header({ todos, setTodos, inputText, setInputText }) {
   // submit new todo list item
   const submitReminder = (e) => {
     e.preventDefault()
-    setTodos([...todos, { text: inputText, completed: false }])
+    setReminders([...reminders, { text: inputText, completed: false }])
     setInputText('')
     history.push('/')
   }
@@ -51,7 +56,6 @@ export default function Header({ todos, setTodos, inputText, setInputText }) {
         </Box>
         <TextField
           autoFocus
-          className="text-area"
           label="Remind..."
           variant="filled"
           fullWidth={true}
