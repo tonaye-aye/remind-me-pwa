@@ -19,7 +19,7 @@ export default function Home({ todos, setTodos }) {
       <Button
         variant="contained"
         color="primary"
-        className="new-note"
+        className="new-note-btn"
         type="submit"
       >
         <AddIcon onClick={() => history.push('/new')} />

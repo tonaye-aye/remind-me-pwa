@@ -22,10 +22,7 @@ export default function Header({ todos, setTodos, inputText, setInputText }) {
   // submit new todo list item
   const submitReminder = (e) => {
     e.preventDefault()
-    setTodos([
-      ...todos,
-      { text: inputText, completed: false, id: Math.random() * 1000 }
-    ])
+    setTodos([...todos, { text: inputText, completed: false }])
     setInputText('')
     history.push('/')
   }

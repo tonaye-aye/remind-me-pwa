@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // import components
 import Home from './components/Home'
 import Form from './components/Form'
+import Note from './components/Note'
+import NotFound from './components/errors/NotFound'
 
 export default function App() {
   // state stuff
@@ -23,9 +25,24 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    // add key values to todo list
+    todos.forEach((item, i) => {
+      item.id = i + 1
+    })
     // save todos to local storage
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
+
+  const renderNote = (routerProps) => {
+    let noteId = parseInt(routerProps.match.params.id)
+    let foundNote = todos.find((item) => item.id === noteId)
+
+    return foundNote ? (
+      <Note note={foundNote} todos={todos} setTodos={setTodos} />
+    ) : (
+      <NotFound />
+    )
+  }
 
   return (
     <>
@@ -39,6 +56,10 @@ export default function App() {
               setInputText={setInputText}
             />
           </Route>
+          <Route
+            path="/note/:id"
+            render={(routerProps) => renderNote(routerProps)}
+          />
           <Route path="/">
             <Home todos={todos} setTodos={setTodos} />
           </Route>
