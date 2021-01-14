@@ -28,16 +28,9 @@ export default function Header({
   // handle input text
   const titleHandler = (e) => {
     setTitleText(e.target.value)
-    seterror({ ...error, title: false })
   }
   const bodyHandler = (e) => {
     setBodyText(e.target.value)
-    seterror({ ...error, body: false })
-  }
-  const cancelHandler = () => {
-    setTitleText('')
-    setBodyText('')
-    history.push('/')
   }
 
   const checkKey = (e) => {
@@ -48,10 +41,8 @@ export default function Header({
   // submit new todo list item
   const submitReminder = (e) => {
     e.preventDefault()
-    if (bodyText === '') {
-      seterror({ ...error, body: true })
-    } else if (titleText === '') {
-      seterror({ ...error, title: true })
+    if (bodyText === '' || titleText === '') {
+      seterror({ ...error, [e.target.name]: true })
     } else {
       setReminders([...reminders, { title: titleText, body: bodyText }])
       setTitleText('')
@@ -63,15 +54,7 @@ export default function Header({
   return (
     <Container className="container">
       <form noValidate autoComplete="off">
-        <Box className="nav">
-          <Button
-            onClick={cancelHandler}
-            size="small"
-            className="install"
-            startIcon={<CloseIcon />}
-          >
-            Cancel
-          </Button>
+        <Box className="nav-edit">
           <Button
             variant="contained"
             color="primary"

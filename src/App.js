@@ -2,16 +2,27 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+// material theme
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
 // import components
 import Home from './components/views/Home'
 import Form from './components/views/Form'
 import Reminder from './components/views/Reminder'
+import Edit from './components/views/Edit'
 import NotFound from './components/errors/NotFound'
 
 export default function App() {
   // state stuff
-  const [inputText, setInputText] = useState('')
+  const [titleText, setTitleText] = useState('')
+  const [bodyText, setBodyText] = useState('')
   const [reminders, setReminders] = useState([])
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: ['Nunito', 'san-serif'].join(',')
+    }
+  })
 
   // run once
   useEffect(() => {
@@ -39,6 +50,8 @@ export default function App() {
 
     return foundReminder ? (
       <Reminder
+        setTitleText={setTitleText}
+        setBodyText={setBodyText}
         reminder={foundReminder}
         reminders={reminders}
         setReminders={setReminders}
@@ -49,26 +62,38 @@ export default function App() {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Router>
         <Switch>
           <Route path="/new">
             <Form
               reminders={reminders}
               setReminders={setReminders}
-              inputText={inputText}
-              setInputText={setInputText}
+              titleText={titleText}
+              setTitleText={setTitleText}
+              bodyText={bodyText}
+              setBodyText={setBodyText}
+            />
+          </Route>
+          <Route path="/edit">
+            <Edit
+              reminders={reminders}
+              setReminders={setReminders}
+              titleText={titleText}
+              setTitleText={setTitleText}
+              bodyText={bodyText}
+              setBodyText={setBodyText}
             />
           </Route>
           <Route
             path="/reminder/:id"
-            render={(routerProps) => renderReminder(routerProps)}
+            render={(reminder) => renderReminder(reminder)}
           />
           <Route path="/">
             <Home reminders={reminders} setReminders={setReminders} />
           </Route>
         </Switch>
       </Router>
-    </>
+    </ThemeProvider>
   )
 }

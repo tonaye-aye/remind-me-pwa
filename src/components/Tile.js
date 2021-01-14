@@ -17,7 +17,7 @@ export default function Tile({ reminders, setReminders, reminder, text }) {
 
   return (
     <Box className="note-tile">
-      <Typography variant="body1">{text}</Typography>
+      <Typography variant="body1">{reminder.title}</Typography>
       <Box>
         <Button
           size="small"
@@ -26,7 +26,7 @@ export default function Tile({ reminders, setReminders, reminder, text }) {
           <LaunchIcon fontSize="small" />
         </Button>
         <Button
-          className="delete-button"
+          style={{ marginLeft: '.5rem' }}
           variant="contained"
           color="secondary"
           size="small"

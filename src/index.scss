@@ -35,6 +35,12 @@ body {
     align-items: center;
     padding: 2rem 0 1.5rem;
   }
+  .nav-edit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2rem 0 1.5rem;
+  }
   .new-note-btn {
     position: fixed;
     bottom: 1.5rem;
@@ -57,16 +63,18 @@ body {
     button {
       min-width: 46px;
     }
-    .delete-button {
-      margin: 0 0 0 0.3rem;
-    }
+  }
+  .input-field {
+    background: rgb(243, 244, 252);
   }
   .reminder {
-    background: rgb(243, 244, 252);
+    background: #dddee5;
     padding: 0.8rem 1rem;
     border-radius: 4px 4px 0 0;
+    margin: 0 0 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
     .pre-title {
-      opacity: 0.3;
+      opacity: 0.4;
     }
   }
 }

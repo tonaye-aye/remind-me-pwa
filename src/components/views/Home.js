@@ -30,7 +30,6 @@ export default function Home({ reminders, setReminders }) {
           reminders={reminders}
           setReminders={setReminders}
           reminder={reminder}
-          text={reminder.text}
         />
       ))}
     </Container>
