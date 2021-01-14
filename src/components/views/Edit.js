@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom'
 // material ui
 import { Box, Button, Container, TextField } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
-import CloseIcon from '@material-ui/icons/Close'
 
 export default function Header({
   reminders,
