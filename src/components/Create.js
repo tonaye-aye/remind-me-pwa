@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
@@ -19,22 +19,14 @@ export default function Create({
   const history = useHistory()
 
   // state stuff - store variable in case of cancel
-  const [titleStore, setTitleStore] = useState('')
-  const [bodyStore, setBodyStore] = useState('')
   const [error, seterror] = useState({
     title: false,
     body: false,
     message: 'Cannot be blank'
   })
-
-  // get initial note, and save in case of cancel edit
-  useEffect(() => {
-    function saveOldValues() {
-      setTitleStore(titleText)
-      setBodyStore(bodyText)
-    }
-    saveOldValues()
-  }, [])
+  // get initial state of reminder/note, and save in case of cancel edit
+  const refTitle = useRef(titleText)
+  const refBody = useRef(bodyText)
 
   // handle input texts
   const titleHandler = (e) => {
@@ -48,7 +40,11 @@ export default function Create({
 
   // cancel edit handler
   const cancelHandler = () => {
-    setReminders([...reminders, { title: titleStore, body: bodyStore }])
+    console.log('inside')
+    setReminders([
+      ...reminders,
+      { title: refTitle.current, body: refBody.current }
+    ])
     setTitleText('')
     setBodyText('')
     history.push('/')
@@ -60,6 +56,7 @@ export default function Create({
   //     submitReminder(e)
   //   }
   // }
+
   // submit new todo list item
   const submitReminder = (e) => {
     e.preventDefault()
