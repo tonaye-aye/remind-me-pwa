@@ -50,7 +50,7 @@ export default function Header() {
         </Typography>
       </div>
       <div>
-        <Button variant="contained" className="install">
+        <Button variant="contained" color="primary" className="install">
           Get app
         </Button>
       </div>
