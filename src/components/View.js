@@ -48,16 +48,16 @@ export default function View({
         </Button>
       </Box>
       <Box className="reminder">
-        <Typography variant="body1">
-          <span className="pre-title">Title:</span>
-          <br /> {reminder.title}
+        <Typography variant="overline" className="pre-title">
+          Title
         </Typography>
+        <Typography variant="body1">{reminder.title}</Typography>
       </Box>
       <Box className="reminder">
-        <Typography variant="body1">
-          <span className="pre-title">Body:</span>
-          <br /> {reminder.body}
+        <Typography variant="overline" className="pre-title">
+          Details
         </Typography>
+        <Typography variant="body1">{reminder.body}</Typography>
       </Box>
     </Container>
   )

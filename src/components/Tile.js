@@ -17,7 +17,7 @@ export default function Tile({ reminders, setReminders, reminder }) {
 
   return (
     <Box className="note-tile">
-      <Typography variant="body1">{reminder.title}</Typography>
+      <Typography variant="body2">{reminder.title}</Typography>
       <Box>
         <ButtonGroup variant="contained">
           <Button

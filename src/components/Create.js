@@ -41,10 +41,12 @@ export default function Create({
   // cancel edit handler
   const cancelHandler = () => {
     console.log('inside')
-    setReminders([
-      ...reminders,
-      { title: refTitle.current, body: refBody.current }
-    ])
+    if (refTitle.current.length > 0 || refBody.current.length > 0) {
+      setReminders([
+        ...reminders,
+        { title: refTitle.current, body: refBody.current }
+      ])
+    }
     setTitleText('')
     setBodyText('')
     history.push('/')
@@ -100,7 +102,7 @@ export default function Create({
           className="input-field"
           autoFocus
           label="Heading"
-          variant="filled"
+          variant="standard"
           fullWidth={true}
           value={titleText}
           onChange={titleHandler}
