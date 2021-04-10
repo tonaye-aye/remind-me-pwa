@@ -8,7 +8,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 // import components
 import Notes from './components/Notes'
 import View from './components/View'
-import Edit from './components/Edit'
+import Create from './components/Create'
 import NotFound from './components/errors/NotFound'
 
 export default function App() {
@@ -66,7 +66,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/create">
-            <Edit
+            <Create
               reminders={reminders}
               setReminders={setReminders}
               titleText={titleText}

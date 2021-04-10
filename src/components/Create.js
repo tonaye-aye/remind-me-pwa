@@ -7,7 +7,7 @@ import { Box, Button, Container, TextField } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import CloseIcon from '@material-ui/icons/Close'
 
-export default function Edit({
+export default function Create({
   reminders,
   setReminders,
   titleText,
@@ -29,8 +29,11 @@ export default function Edit({
 
   // get initial note, and save in case of cancel edit
   useEffect(() => {
-    setTitleStore(titleText)
-    setBodyStore(bodyText)
+    function saveOldValues() {
+      setTitleStore(titleText)
+      setBodyStore(bodyText)
+    }
+    saveOldValues()
   }, [])
 
   // handle input texts
