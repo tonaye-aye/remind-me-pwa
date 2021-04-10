@@ -3,13 +3,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  IconButton,
-  Typography
-} from '@material-ui/core'
+import { Box, Button, ButtonGroup, Typography } from '@material-ui/core'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 import LaunchIcon from '@material-ui/icons/Launch'
 

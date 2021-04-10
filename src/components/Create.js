@@ -53,12 +53,12 @@ export default function Create({
   // submit on enter key
   // const checkKey = (e) => {
   //   if (e.key === 'Enter') {
-  //     submitReminder(e)
+  //     handleSubmit(e)
   //   }
   // }
 
   // submit new todo list item
-  const submitReminder = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (bodyText === '') {
       seterror({ ...error, body: true })
@@ -91,7 +91,7 @@ export default function Create({
             className="install"
             size="small"
             startIcon={<SaveIcon />}
-            onClick={submitReminder}
+            onClick={handleSubmit}
           >
             Save
           </Button>
