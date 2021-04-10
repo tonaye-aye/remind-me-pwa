@@ -6,10 +6,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 // import components
-import Home from './components/views/Home'
-import Form from './components/views/Form'
-import Reminder from './components/views/Reminder'
-import Edit from './components/views/Edit'
+import Notes from './components/Notes'
+import View from './components/View'
+import Edit from './components/Edit'
 import NotFound from './components/errors/NotFound'
 
 export default function App() {
@@ -44,12 +43,13 @@ export default function App() {
     localStorage.setItem('reminders', JSON.stringify(reminders))
   }, [reminders])
 
+  // dynamic reminder path creation
   const renderReminder = (routerProps) => {
     let reminderId = parseInt(routerProps.match.params.id)
     let foundReminder = reminders.find((reminder) => reminder.id === reminderId)
 
     return foundReminder ? (
-      <Reminder
+      <View
         setTitleText={setTitleText}
         setBodyText={setBodyText}
         reminder={foundReminder}
@@ -65,17 +65,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Switch>
-          <Route path="/new">
-            <Form
-              reminders={reminders}
-              setReminders={setReminders}
-              titleText={titleText}
-              setTitleText={setTitleText}
-              bodyText={bodyText}
-              setBodyText={setBodyText}
-            />
-          </Route>
-          <Route path="/edit">
+          <Route path="/create">
             <Edit
               reminders={reminders}
               setReminders={setReminders}
@@ -90,7 +80,7 @@ export default function App() {
             render={(reminder) => renderReminder(reminder)}
           />
           <Route path="/">
-            <Home reminders={reminders} setReminders={setReminders} />
+            <Notes reminders={reminders} setReminders={setReminders} />
           </Route>
         </Switch>
       </Router>

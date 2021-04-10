@@ -45,7 +45,7 @@ export default function Header() {
     <Box className="nav">
       <div className="logo">
         <img src={logoImg} alt="Remind me" />
-        <Typography variant="overline" display="block">
+        <Typography variant="h5" display="block">
           Remind me
         </Typography>
       </div>

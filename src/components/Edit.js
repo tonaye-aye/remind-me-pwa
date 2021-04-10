@@ -1,5 +1,5 @@
 //import react
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
@@ -7,7 +7,7 @@ import { Box, Button, Container, TextField } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import CloseIcon from '@material-ui/icons/Close'
 
-export default function Header({
+export default function Edit({
   reminders,
   setReminders,
   titleText,
@@ -18,14 +18,22 @@ export default function Header({
   // history
   const history = useHistory()
 
-  // state stuff
+  // state stuff - store variable in case of cancel
+  const [titleStore, setTitleStore] = useState('')
+  const [bodyStore, setBodyStore] = useState('')
   const [error, seterror] = useState({
     title: false,
     body: false,
     message: 'Cannot be blank'
   })
 
-  // handle input text
+  // get initial note, and save in case of cancel edit
+  useEffect(() => {
+    setTitleStore(titleText)
+    setBodyStore(bodyText)
+  }, [])
+
+  // handle input texts
   const titleHandler = (e) => {
     setTitleText(e.target.value)
     seterror({ ...error, title: false })
@@ -34,17 +42,21 @@ export default function Header({
     setBodyText(e.target.value)
     seterror({ ...error, body: false })
   }
+
+  // cancel edit handler
   const cancelHandler = () => {
+    setReminders([...reminders, { title: titleStore, body: bodyStore }])
     setTitleText('')
     setBodyText('')
     history.push('/')
   }
 
-  const checkKey = (e) => {
-    if (e.key === 'Enter') {
-      submitReminder(e)
-    }
-  }
+  // submit on enter key
+  // const checkKey = (e) => {
+  //   if (e.key === 'Enter') {
+  //     submitReminder(e)
+  //   }
+  // }
   // submit new todo list item
   const submitReminder = (e) => {
     e.preventDefault()
@@ -65,9 +77,10 @@ export default function Header({
       <form noValidate autoComplete="off">
         <Box className="nav">
           <Button
+            variant="contained"
+            color="secondary"
             onClick={cancelHandler}
             size="small"
-            className="install"
             startIcon={<CloseIcon />}
           >
             Cancel
@@ -86,26 +99,26 @@ export default function Header({
         <TextField
           className="input-field"
           autoFocus
-          label="Title..."
+          label="Heading"
           variant="filled"
           fullWidth={true}
           value={titleText}
           onChange={titleHandler}
-          onKeyPress={checkKey}
+          //onKeyPress={checkKey}
           style={{ marginBottom: '0.75rem' }}
           error={error.title}
           helperText={error.title && error.message}
         />
         <TextField
           className="input-field"
-          label="Body..."
+          label="Notes"
           variant="filled"
           multiline
           rows={5}
           fullWidth={true}
           value={bodyText}
           onChange={bodyHandler}
-          onKeyPress={checkKey}
+          //onKeyPress={checkKey}
           error={error.body}
           helperText={error.body && error.message}
         />

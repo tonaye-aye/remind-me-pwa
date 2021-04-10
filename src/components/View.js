@@ -7,7 +7,7 @@ import { Box, Button, Container, Typography } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
-export default function Reminder({
+export default function View({
   setTitleText,
   setBodyText,
   reminder,
@@ -20,7 +20,7 @@ export default function Reminder({
   const editHandler = () => {
     setTitleText(reminder.title)
     setBodyText(reminder.body)
-    history.push('/edit')
+    history.push('/create')
     setReminders(reminders.filter((item) => item.id !== reminder.id))
   }
 
@@ -28,6 +28,7 @@ export default function Reminder({
     <Container className="container">
       <Box className="nav">
         <Button
+          variant="contained"
           onClick={() => history.push('/')}
           size="small"
           className="install"
@@ -36,6 +37,7 @@ export default function Reminder({
           Back
         </Button>
         <Button
+          variant="contained"
           color="primary"
           size="small"
           startIcon={<EditIcon />}

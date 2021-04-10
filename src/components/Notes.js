@@ -7,10 +7,10 @@ import { Button, Container } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 
 // components
-import Header from '../Header'
-import Tile from '../Tile'
+import Header from './Header'
+import Tile from './Tile'
 
-export default function Home({ reminders, setReminders }) {
+export default function Notes({ reminders, setReminders }) {
   const history = useHistory()
 
   return (
@@ -22,7 +22,7 @@ export default function Home({ reminders, setReminders }) {
         className="new-note-btn"
         type="submit"
       >
-        <AddIcon onClick={() => history.push('/new')} />
+        <AddIcon onClick={() => history.push('/create')} />
       </Button>
       {reminders.map((reminder, index) => (
         <Tile

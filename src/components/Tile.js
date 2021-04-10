@@ -7,7 +7,7 @@ import { Box, Button, Typography } from '@material-ui/core'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 import LaunchIcon from '@material-ui/icons/Launch'
 
-export default function Tile({ reminders, setReminders, reminder, text }) {
+export default function Tile({ reminders, setReminders, reminder }) {
   const history = useHistory()
 
   // delete handler for todo items
@@ -22,8 +22,10 @@ export default function Tile({ reminders, setReminders, reminder, text }) {
         <Button
           size="small"
           onClick={() => history.push(`/reminder/${reminder.id}`)}
+          variant="contained"
+          endIcon={<LaunchIcon />}
         >
-          <LaunchIcon fontSize="small" />
+          Expand
         </Button>
         <Button
           style={{ marginLeft: '.5rem' }}
