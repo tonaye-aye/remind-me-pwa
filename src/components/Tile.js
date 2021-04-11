@@ -3,9 +3,9 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
-import { Box, Button, ButtonGroup, Typography } from '@material-ui/core'
+import { Box, Button, Typography } from '@material-ui/core'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
-import LaunchIcon from '@material-ui/icons/Launch'
+import VisibilityIcon from '@material-ui/icons/Visibility'
 
 export default function Tile({ reminders, setReminders, reminder }) {
   const history = useHistory()
@@ -19,18 +19,24 @@ export default function Tile({ reminders, setReminders, reminder }) {
     <Box className="note-tile">
       <Typography variant="body2">{reminder.title}</Typography>
       <Box>
-        <ButtonGroup variant="contained">
-          <Button
-            size="small"
-            onClick={() => history.push(`/reminder/${reminder.id}`)}
-            endIcon={<LaunchIcon />}
-          >
-            Expand
-          </Button>
-          <Button color="secondary" size="small" onClick={deleteHandler}>
-            <DeleteOutlineIcon fontSize="small" />
-          </Button>
-        </ButtonGroup>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => history.push(`/reminder/${reminder.id}`)}
+          endIcon={<VisibilityIcon />}
+          style={{ marginRight: '.5rem' }}
+        >
+          Read
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={deleteHandler}
+          endIcon={<DeleteOutlineIcon />}
+        >
+          Delete
+        </Button>
       </Box>
     </Box>
   )

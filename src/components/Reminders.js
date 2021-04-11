@@ -10,7 +10,7 @@ import AddIcon from '@material-ui/icons/Add'
 import Header from './Header'
 import Tile from './Tile'
 
-export default function Notes({ reminders, setReminders }) {
+export default function Reminders({ reminders, setReminders }) {
   const history = useHistory()
 
   return (

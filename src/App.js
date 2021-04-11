@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 // import components
-import Notes from './components/Notes'
+import Reminders from './components/Reminders'
 import View from './components/View'
 import Create from './components/Create'
 import NotFound from './components/errors/NotFound'
@@ -80,7 +80,7 @@ export default function App() {
             render={(reminder) => renderReminder(reminder)}
           />
           <Route path="/">
-            <Notes reminders={reminders} setReminders={setReminders} />
+            <Reminders reminders={reminders} setReminders={setReminders} />
           </Route>
         </Switch>
       </Router>
