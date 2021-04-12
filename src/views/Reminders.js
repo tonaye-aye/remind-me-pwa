@@ -3,23 +3,23 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
-import { Button, Container } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 
 // components
-import Header from './Header'
-import Tile from './Tile'
+import Brand from '../components/Brand'
+import Tile from '../components/Tile'
 
 export default function Reminders({ reminders, setReminders }) {
   const history = useHistory()
 
   return (
-    <Container className="container">
-      <Header />
+    <Box>
+      <Brand />
       <Button
         variant="contained"
         color="primary"
-        className="new-note-btn"
+        className="new-reminder"
         type="submit"
       >
         <AddIcon onClick={() => history.push('/create')} />
@@ -32,6 +32,6 @@ export default function Reminders({ reminders, setReminders }) {
           reminder={reminder}
         />
       ))}
-    </Container>
+    </Box>
   )
 }

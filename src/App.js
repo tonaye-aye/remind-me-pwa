@@ -4,12 +4,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // material theme
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { Container } from '@material-ui/core'
 
-// import components
-import Reminders from './components/Reminders'
-import View from './components/View'
-import Create from './components/Create'
-import NotFound from './components/errors/NotFound'
+// import viewa and components
+import Reminders from './views/Reminders'
+import Read from './views/Read'
+import Create from './views/Create'
+import NotFound from './components/NotFound'
 
 export default function App() {
   // state stuff
@@ -49,7 +50,7 @@ export default function App() {
     let foundReminder = reminders.find((reminder) => reminder.id === reminderId)
 
     return foundReminder ? (
-      <View
+      <Read
         setTitleText={setTitleText}
         setBodyText={setBodyText}
         reminder={foundReminder}
@@ -63,27 +64,29 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-          <Route path="/create">
-            <Create
-              reminders={reminders}
-              setReminders={setReminders}
-              titleText={titleText}
-              setTitleText={setTitleText}
-              bodyText={bodyText}
-              setBodyText={setBodyText}
+      <Container className="container">
+        <Router>
+          <Switch>
+            <Route path="/create">
+              <Create
+                reminders={reminders}
+                setReminders={setReminders}
+                titleText={titleText}
+                setTitleText={setTitleText}
+                bodyText={bodyText}
+                setBodyText={setBodyText}
+              />
+            </Route>
+            <Route
+              path="/reminder/:id"
+              render={(reminder) => renderReminder(reminder)}
             />
-          </Route>
-          <Route
-            path="/reminder/:id"
-            render={(reminder) => renderReminder(reminder)}
-          />
-          <Route path="/">
-            <Reminders reminders={reminders} setReminders={setReminders} />
-          </Route>
-        </Switch>
-      </Router>
+            <Route path="/">
+              <Reminders reminders={reminders} setReminders={setReminders} />
+            </Route>
+          </Switch>
+        </Router>
+      </Container>
     </ThemeProvider>
   )
 }

@@ -16,9 +16,29 @@ export default function Tile({ reminders, setReminders, reminder }) {
   }
 
   return (
-    <Box className="note-tile">
-      <Typography variant="body2">{reminder.title}</Typography>
-      <Box>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      p={1}
+      mb={1}
+      className="tile"
+    >
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Typography variant="body2">{reminder.title}</Typography>
+        <Box ml={1}>
+          <Typography variant="caption">
+            {reminder.body.slice(0, 20).trim() + '...'}
+          </Typography>
+        </Box>
+      </Box>
+
+      <Box className="ctas">
         <Button
           variant="contained"
           size="small"

@@ -1,7 +1,7 @@
-// colours
+// variables
 $lightWhite: #e9e9e9;
 $marginBottom: 0.6rem;
-
+$marginBottomEdit: 0.4rem;
 $boxShadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.1),
   0 4px 4px rgba(0, 0, 0, 0.075), 0 8px 8px rgba(0, 0, 0, 0.05),
   0 16px 16px rgba(0, 0, 0, 0.025);
@@ -26,30 +26,7 @@ body {
 .container {
   position: relative;
   min-height: 100vh;
-  .logo {
-    display: flex;
-    align-items: center;
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    img {
-      width: 20px;
-      height: auto;
-      padding-right: 1rem;
-    }
-  }
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 0 1.5rem;
-  }
-  .nav-edit {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 2rem 0 1.5rem;
-  }
-  .new-note-btn {
+  .new-reminder {
     box-shadow: $boxShadow;
     position: fixed;
     bottom: 1.5rem;
@@ -60,39 +37,28 @@ body {
     padding: 1rem;
     z-index: 99;
   }
-  .note-tile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 1rem;
+  .tile {
     background: $lightWhite;
     box-shadow: $boxShadow;
-    border-radius: 4px;
     margin-bottom: $marginBottom;
-    button {
-      min-width: 46px;
-    }
-  }
-  .input-field {
     border-radius: 4px;
   }
   .reminder {
     background: $lightWhite;
     box-shadow: $boxShadow;
-    padding: 0.5rem 1rem 0.8rem;
-    border-radius: 4px;
     margin-bottom: $marginBottom;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
-    .pre-title {
-      opacity: 0.3;
-    }
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+  }
+  .edit {
+    margin-bottom: $marginBottomEdit;
   }
 }
 
 // media queries
 @media screen and (max-width: 600px) {
   .container {
-    .note-tile {
+    .tile {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -104,8 +70,10 @@ body {
         #dddddd 100%
       );
       div:last-child {
-        margin-top: 1.2rem;
         align-self: flex-end;
+      }
+      .ctas {
+        margin-top: 1.2rem;
       }
     }
   }

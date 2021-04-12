@@ -6,7 +6,7 @@ import { Box, Button, Typography } from '@material-ui/core'
 
 import logoImg from '../assets/logo.png'
 
-export default function Header() {
+export default function Brand() {
   // run once
   useEffect(() => {
     // Code to handle install prompt on desktop
@@ -42,13 +42,22 @@ export default function Header() {
   }, [])
 
   return (
-    <Box className="nav">
-      <div className="logo">
-        <img src={logoImg} alt="Remind me" />
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      py={2}
+    >
+      <Box display="flex" flexDirection="row">
+        <img
+          src={logoImg}
+          alt="Remind me"
+          style={{ width: '30px', height: 'auto', paddingRight: '1rem' }}
+        />
         <Typography variant="h5" display="block">
           Remind me
         </Typography>
-      </div>
+      </Box>
       <div>
         <Button variant="contained" color="primary" className="install">
           Get app

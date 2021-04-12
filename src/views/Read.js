@@ -3,11 +3,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 // material ui
-import { Box, Button, Container, Typography } from '@material-ui/core'
+import { Box, Button, Typography } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
-export default function View({
+export default function Read({
   setTitleText,
   setBodyText,
   reminder,
@@ -16,7 +16,7 @@ export default function View({
 }) {
   const history = useHistory()
 
-  //edit note
+  // go to edit note page, taking this reminder detail with you
   const editHandler = () => {
     setTitleText(reminder.title)
     setBodyText(reminder.body)
@@ -25,8 +25,13 @@ export default function View({
   }
 
   return (
-    <Container className="container">
-      <Box className="nav">
+    <Box>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        py={2}
+      >
         <Button
           variant="contained"
           onClick={() => history.push('/')}
@@ -47,18 +52,14 @@ export default function View({
           Edit
         </Button>
       </Box>
+      <Typography variant="overline">Title</Typography>
       <Box className="reminder">
-        <Typography variant="overline" className="pre-title">
-          Title
-        </Typography>
         <Typography variant="body1">{reminder.title}</Typography>
       </Box>
+      <Typography variant="overline">Details</Typography>
       <Box className="reminder">
-        <Typography variant="overline" className="pre-title">
-          Details
-        </Typography>
         <Typography variant="body1">{reminder.body}</Typography>
       </Box>
-    </Container>
+    </Box>
   )
 }
