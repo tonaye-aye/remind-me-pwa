@@ -4,7 +4,23 @@ import React, { useEffect } from 'react'
 // material ui
 import { Box, Button, Typography } from '@material-ui/core'
 
+// framer motion animation
+import { motion } from 'framer-motion'
+
+// assets
 import logoImg from '../assets/logo.png'
+
+const brandVariants = {
+  hidden: {
+    opacity: 0,
+    y: '-100vh'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.2 }
+  }
+}
 
 export default function Brand() {
   // run once
@@ -42,28 +58,30 @@ export default function Brand() {
   }, [])
 
   return (
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      pt={3}
-      pb={4}
-    >
-      <Box display="flex" flexDirection="row">
-        <img
-          src={logoImg}
-          alt="Remind me"
-          style={{ width: '30px', height: 'auto', paddingRight: '1rem' }}
-        />
-        <Typography variant="h5" display="block">
-          Remind me
-        </Typography>
+    <motion.div variants={brandVariants} initial="hidden" animate="visible">
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        pt={3}
+        pb={4}
+      >
+        <Box display="flex" flexDirection="row">
+          <img
+            src={logoImg}
+            alt="Remind me"
+            style={{ width: '30px', height: 'auto', paddingRight: '1rem' }}
+          />
+          <Typography variant="h5" display="block">
+            Remind me
+          </Typography>
+        </Box>
+        <Box>
+          <Button variant="contained" color="primary" className="install">
+            Get app
+          </Button>
+        </Box>
       </Box>
-      <div>
-        <Button variant="contained" color="primary" className="install">
-          Get app
-        </Button>
-      </div>
-    </Box>
+    </motion.div>
   )
 }

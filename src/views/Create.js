@@ -9,6 +9,32 @@ import { withStyles } from '@material-ui/core/styles'
 import SaveIcon from '@material-ui/icons/Save'
 import CloseIcon from '@material-ui/icons/Close'
 
+// framer motion
+import { motion } from 'framer-motion'
+
+const navVariants = {
+  hidden: {
+    opacity: 0,
+    y: '-100vh'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.2, delay: 0.4 }
+  }
+}
+const formVariants = {
+  hidden: {
+    opacity: 0,
+    y: '100vh'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.2, delay: 0.8 }
+  }
+}
+
 // customised input fields here, created a custom element
 const CustomInput = withStyles((theme) => ({
   root: {
@@ -102,63 +128,67 @@ export default function Create({
 
   return (
     <Box>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        pt={3}
-        pb={4}
-      >
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={cancelHandler}
-          size="small"
-          startIcon={<CloseIcon />}
+      <motion.div variants={navVariants} initial="hidden" animate="visible">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          pt={3}
+          pb={4}
         >
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          className="install"
-          size="small"
-          startIcon={<SaveIcon />}
-          onClick={submitHandler}
-        >
-          Save
-        </Button>
-      </Box>
-      <form noValidate autoComplete="off">
-        <Typography variant="overline">Title</Typography>
-        <Box className="edit">
-          <CustomInput
-            autoFocus
-            placeholder="Title"
-            variant="filled"
-            fullWidth={true}
-            value={titleText}
-            onChange={titleHandler}
-            onKeyPress={checkKey}
-            style={{ marginBottom: '0.3rem' }}
-          />
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={cancelHandler}
+            size="small"
+            startIcon={<CloseIcon />}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="install"
+            size="small"
+            startIcon={<SaveIcon />}
+            onClick={submitHandler}
+          >
+            Save
+          </Button>
         </Box>
-        <Typography variant="overline">Details</Typography>
-        <Box className="edit">
-          <CustomInput
-            placeholder="Details"
-            variant="filled"
-            multiline
-            fullWidth={true}
-            value={bodyText}
-            onChange={bodyHandler}
-            onKeyPress={checkKey}
-          />
-        </Box>
-        <Typography variant="caption" color="secondary">
-          {(error.title || error.details) && error.message}
-        </Typography>
-      </form>
+      </motion.div>
+      <motion.div variants={formVariants} initial="hidden" animate="visible">
+        <form noValidate autoComplete="off">
+          <Typography variant="overline">Title</Typography>
+          <Box className="edit">
+            <CustomInput
+              autoFocus
+              placeholder="Title"
+              variant="filled"
+              fullWidth={true}
+              value={titleText}
+              onChange={titleHandler}
+              onKeyPress={checkKey}
+              style={{ marginBottom: '0.3rem' }}
+            />
+          </Box>
+          <Typography variant="overline">Details</Typography>
+          <Box className="edit">
+            <CustomInput
+              placeholder="Details"
+              variant="filled"
+              multiline
+              fullWidth={true}
+              value={bodyText}
+              onChange={bodyHandler}
+              onKeyPress={checkKey}
+            />
+          </Box>
+          <Typography variant="caption" color="secondary">
+            {(error.title || error.details) && error.message}
+          </Typography>
+        </form>
+      </motion.div>
     </Box>
   )
 }

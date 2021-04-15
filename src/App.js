@@ -81,7 +81,7 @@ export default function App() {
               path="/reminder/:id"
               render={(reminder) => renderReminder(reminder)}
             />
-            <Route path="/">
+            <Route path="*">
               <Reminders reminders={reminders} setReminders={setReminders} />
             </Route>
           </Switch>

@@ -10,21 +10,22 @@ export default function NotFound() {
   const history = useHistory()
 
   return (
-    <Box className="center-div">
-      <Typography variant="h6" display="block">
-        Whoops! No reminder found.
-      </Typography>
-      <Box mt={2} display="flex" justifyContent="center">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => history.push('/')}
-          size="small"
-          startIcon={<HomeIcon />}
-        >
-          Go Home
-        </Button>
+    <Box className="center-div" textAlign="center">
+      <Box mb={2}>
+        <Typography variant="h6" display="block">
+          Whoops! No reminder found.
+        </Typography>
       </Box>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => history.push('/')}
+        size="small"
+        startIcon={<HomeIcon />}
+      >
+        Go Home
+      </Button>
     </Box>
   )
 }
