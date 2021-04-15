@@ -30,7 +30,8 @@ export default function Read({
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        py={2}
+        pt={3}
+        pb={4}
       >
         <Button
           variant="contained"

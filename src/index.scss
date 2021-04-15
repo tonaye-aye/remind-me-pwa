@@ -26,6 +26,7 @@ body {
 .container {
   position: relative;
   min-height: 100vh;
+  display: flex;
   .new-reminder {
     box-shadow: $boxShadow;
     position: fixed;
@@ -36,6 +37,13 @@ body {
     min-height: 0;
     padding: 1rem;
     z-index: 99;
+  }
+  .new-reminder-start {
+    box-shadow: $boxShadow;
+    border-radius: 50%;
+    min-width: 0;
+    min-height: 0;
+    padding: 1rem;
   }
   .tile {
     background: $lightWhite;
@@ -52,6 +60,12 @@ body {
   }
   .edit {
     margin-bottom: $marginBottomEdit;
+  }
+  .center-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

@@ -10,8 +10,8 @@ export default function NotFound() {
   const history = useHistory()
 
   return (
-    <Box>
-      <Typography variant="body1" display="block">
+    <Box className="center-div">
+      <Typography variant="h6" display="block">
         Whoops! No reminder found.
       </Typography>
       <Box mt={2} display="flex" justifyContent="center">

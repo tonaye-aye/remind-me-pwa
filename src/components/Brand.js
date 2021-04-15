@@ -46,7 +46,8 @@ export default function Brand() {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
-      py={2}
+      pt={3}
+      pb={4}
     >
       <Box display="flex" flexDirection="row">
         <img
